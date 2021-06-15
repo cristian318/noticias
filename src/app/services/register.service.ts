@@ -47,21 +47,21 @@ export class RegisterService {
   createFormStudent() {
     return this.formB.group({
       [this.studentModel.NAME]: new FormControl(
-        'prueba',
+        'pruea',
         Validators.compose([
           Validators.required,
           Validators.pattern('[A-Za-záéíóúüÁÉÍÓÚÜñÑ ]+'),
         ])
       ),
       [this.studentModel.FAMILY_NAME]: new FormControl(
-        'prueba',
+        '',
         Validators.compose([
           Validators.required,
           Validators.pattern('[A-Za-záéíóúüÁÉÍÓÚÜñÑ ]+'),
         ])
       ),
       [this.studentModel.EMAIL]: new FormControl(
-        'prueba@prueba.com',
+        '',
         Validators.compose([
           Validators.required,
           Validators.pattern(
@@ -70,11 +70,11 @@ export class RegisterService {
         ])
       ),
       [this.studentModel.PROGRAM]: new FormControl(
-        '2050',
+        '',
         Validators.compose([Validators.required])
       ),
       [this.studentModel.PHONE]: new FormControl(
-        '123',
+        '',
         Validators.compose([
           Validators.required,
           Validators.minLength(1),
