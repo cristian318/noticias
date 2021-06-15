@@ -18,7 +18,9 @@ export class HttpService {
   }
 
   makePost(endpoint: string, data: any): Observable<any> {
-    return this.http.post(environment.apiUrl + endpoint, data);
+    return this.http.post(environment.apiUrl + endpoint, data, {
+      observe: 'response',
+    });
   }
   getDefaultHeaders(): HttpHeaders {
     return new HttpHeaders()

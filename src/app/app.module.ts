@@ -13,6 +13,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FooterComponent } from './components/footer/footer.component';
 import { StoreModule } from '@ngrx/store';
 import { newsReducer, NewsEffects } from './store/';
@@ -41,6 +43,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatInputModule,
     MatCardModule,
+    MatSelectModule,
+    MatSnackBarModule,
     StoreModule.forRoot({ news: newsReducer }, {}),
     HttpClientModule,
     EffectsModule.forRoot([NewsEffects]),

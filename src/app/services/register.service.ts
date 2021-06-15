@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Student } from '../models/student.model';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,7 @@ export class RegisterService {
       { type: 'pattern', message: 'El email no tiene un formato válido.' },
     ],
     [this.studentModel.PHONE]: [
+      { type: 'required', message: 'El teléfono es requerido.' },
       { type: 'pattern', message: 'El teléfono solo debe contener números' },
       {
         type: 'minlength',
@@ -40,26 +42,26 @@ export class RegisterService {
     ],
   };
 
-  constructor(private formB: FormBuilder) {}
+  constructor(private formB: FormBuilder, private httpService: HttpService) {}
 
   createFormStudent() {
     return this.formB.group({
       [this.studentModel.NAME]: new FormControl(
-        '',
+        'prueba',
         Validators.compose([
           Validators.required,
           Validators.pattern('[A-Za-záéíóúüÁÉÍÓÚÜñÑ ]+'),
         ])
       ),
       [this.studentModel.FAMILY_NAME]: new FormControl(
-        '',
+        'prueba',
         Validators.compose([
           Validators.required,
           Validators.pattern('[A-Za-záéíóúüÁÉÍÓÚÜñÑ ]+'),
         ])
       ),
       [this.studentModel.EMAIL]: new FormControl(
-        '',
+        'prueba@prueba.com',
         Validators.compose([
           Validators.required,
           Validators.pattern(
@@ -68,12 +70,13 @@ export class RegisterService {
         ])
       ),
       [this.studentModel.PROGRAM]: new FormControl(
-        '',
+        '2050',
         Validators.compose([Validators.required])
       ),
       [this.studentModel.PHONE]: new FormControl(
-        '',
+        '123',
         Validators.compose([
+          Validators.required,
           Validators.minLength(1),
           Validators.maxLength(10),
           Validators.pattern('[0-9]+'),
@@ -81,5 +84,9 @@ export class RegisterService {
       ),
       [this.studentModel.COMMENT]: new FormControl(''),
     });
+  }
+
+  saveData(data: any) {
+    return this.httpService.makePost('servicios/registro', data);
   }
 }
