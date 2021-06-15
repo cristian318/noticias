@@ -1,5 +1,8 @@
 <section class="register">
   <div>
+    <h1>Registro</h1>
+  </div>
+  <div>
     <form class="example-form" [formGroup]="formStudent" #form>
       <mat-form-field class="example-full-width">
         <mat-label>Nombre *</mat-label>
@@ -86,7 +89,7 @@
           [formControlName]="studentModel.COMMENT"
         ></textarea>
       </mat-form-field>
-      <div>
+      <div class="buttons-form">
         <button mat-raised-button type="reset">Limpiar</button>
         <button
           mat-button
