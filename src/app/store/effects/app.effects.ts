@@ -15,14 +15,14 @@ export class NewsEffects {
     return this.actions$.pipe(
       ofType(getNews),
       tap(() => {
-        console.log('Api in queue');
+        // console.log('Api in queue');
       }),
       mergeMap(() => {
-        console.log('Api in process');
+        // console.log('Api in process');
         return this.newsService.getNews().pipe(
           map((res) => setNews({ news: res })),
-          catchError(() => of(setNews({ news: [] }))),
-          tap(() => console.log('End'))
+          catchError(() => of(setNews({ news: [] })))
+          // tap(() => console.log('End'))
         );
       })
     );

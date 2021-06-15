@@ -1,0 +1,19 @@
+<section class="news-details">
+  <mat-card class="card" *ngIf="news && news.id; else noNews">
+    <mat-card-header>
+      <mat-card-title>{{ news.title }}</mat-card-title>
+      <mat-card-subtitle>id: {{ news.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ news.body }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button mat-stroked-button color="primary" (click)="goBack()">
+        Volver
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <ng-template #noNews>
+    <p>No se ha cargado la noticia con el id {{ newsId }}</p>
+  </ng-template>
+</section>

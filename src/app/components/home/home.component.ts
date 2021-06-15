@@ -4,6 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { News } from 'src/app/models/news.model';
 import { NewsState } from 'src/app/models/newState.model';
+import { RouterService } from 'src/app/services/router.service';
 import { getNews } from '../../store';
 import * as newsSelector from '../../store/selectors/news.selector';
 
@@ -19,7 +20,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   observables: any[];
   news: News[];
 
-  constructor(private store: Store<{ news: NewsState }>) {
+  constructor(
+    private store: Store<{ news: NewsState }>,
+    private routerService: RouterService
+  ) {
     this.observables = [];
     this.news = [];
   }
@@ -39,7 +43,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.observables.push(
       this.data$.subscribe((res) => {
         this.news = res;
-        console.log(res);
       })
     );
   }
@@ -52,5 +55,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getNews() {
     this.store.dispatch(getNews());
+  }
+
+  seeMore(id: string) {
+    this.routerService.goto('/noticias/' + id);
   }
 }
