@@ -12,15 +12,25 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { FooterComponent } from './components/footer/footer.component';
 import { StoreModule } from '@ngrx/store';
 import { newsReducer, NewsEffects } from './store/';
 import { HomeComponent } from './components/home/home.component';
 import { EffectsModule } from '@ngrx/effects';
 import { NewsDetailsComponent } from './components/news-details/news-details.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent, NewsDetailsComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    NewsDetailsComponent,
+    RegistroComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,10 +39,13 @@ import { NewsDetailsComponent } from './components/news-details/news-details.com
     MatIconModule,
     MatSliderModule,
     MatButtonModule,
+    MatInputModule,
     MatCardModule,
     StoreModule.forRoot({ news: newsReducer }, {}),
     HttpClientModule,
     EffectsModule.forRoot([NewsEffects]),
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

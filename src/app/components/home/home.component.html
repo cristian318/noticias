@@ -1,9 +1,4 @@
 <section class="home">
-  <div>
-    home
-    <button (click)="destroyObservables()">destroy</button>
-    <button (click)="getNews()">getNews</button>
-  </div>
   <mat-card class="card" *ngFor="let item of news">
     <mat-card-header>
       <mat-card-title>{{ item.id }}</mat-card-title>

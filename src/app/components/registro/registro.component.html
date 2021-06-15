@@ -1,0 +1,91 @@
+<section class="register">
+  <div>
+    <form class="example-form" [formGroup]="formStudent">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre *</mat-label>
+        <input
+          matInput
+          placeholder="Escribe el nombre"
+          [formControlName]="studentModel.NAME"
+        />
+        <mat-error
+          *ngFor="let validation of validationMessages[studentModel.NAME]"
+        >
+          <span *ngIf="validationForm(studentModel.NAME, validation)">
+            {{ validation.message }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Apellido *</mat-label>
+        <input
+          matInput
+          placeholder="Escribe el apellido"
+          [formControlName]="studentModel.FAMILY_NAME"
+        />
+        <mat-error
+          *ngFor="
+            let validation of validationMessages[studentModel.FAMILY_NAME]
+          "
+        >
+          <span *ngIf="validationForm(studentModel.FAMILY_NAME, validation)">
+            {{ validation.message }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email *</mat-label>
+        <input
+          matInput
+          placeholder="Escribe el email"
+          [formControlName]="studentModel.EMAIL"
+        />
+        <mat-error
+          *ngFor="let validation of validationMessages[studentModel.EMAIL]"
+        >
+          <span *ngIf="validationForm(studentModel.EMAIL, validation)">
+            {{ validation.message }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Teléfono *</mat-label>
+        <input
+          matInput
+          placeholder="Escribe el teléfono"
+          [formControlName]="studentModel.PHONE"
+        />
+        <mat-error
+          *ngFor="let validation of validationMessages[studentModel.PHONE]"
+        >
+          <span *ngIf="validationForm(studentModel.PHONE, validation)">
+            {{ validation.message }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Programa de interés *</mat-label>
+        <input
+          matInput
+          placeholder="Selecciona el programa de interés"
+          [formControlName]="studentModel.PROGRAM"
+        />
+        <mat-error
+          *ngFor="let validation of validationMessages[studentModel.PROGRAM]"
+        >
+          <span *ngIf="validationForm(studentModel.PROGRAM, validation)">
+            {{ validation.message }}
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Comentario</mat-label>
+        <textarea
+          matInput
+          placeholder="Escribe un comentario"
+          [formControlName]="studentModel.COMMENT"
+        ></textarea>
+      </mat-form-field>
+    </form>
+  </div>
+</section>
