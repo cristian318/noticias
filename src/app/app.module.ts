@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,9 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
+import { StoreModule } from '@ngrx/store';
+import { newsReducer, NewsEffects } from './store/';
+import { HomeComponent } from './components/home/home.component';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +27,9 @@ import { FooterComponent } from './components/footer/footer.component';
     MatIconModule,
     MatSliderModule,
     MatButtonModule,
+    StoreModule.forRoot({ news: newsReducer }, {}),
+    HttpClientModule,
+    EffectsModule.forRoot([NewsEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
