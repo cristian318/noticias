@@ -47,7 +47,7 @@ export class RegisterService {
   createFormStudent() {
     return this.formB.group({
       [this.studentModel.NAME]: new FormControl(
-        'pruea',
+        '',
         Validators.compose([
           Validators.required,
           Validators.pattern('[A-Za-záéíóúüÁÉÍÓÚÜñÑ ]+'),
